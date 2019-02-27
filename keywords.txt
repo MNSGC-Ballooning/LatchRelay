@@ -1,0 +1,4 @@
+LatchRelay	KEYWORD1
+init	KEYWORD2
+setState	KEYWORD2
+getState	KEWORD2
