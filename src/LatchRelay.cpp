@@ -1,12 +1,16 @@
 #include "LatchRelay.h"
 
-LatchRelay::LatchRelay(int onPin, int offPin):
+LatchRelay::LatchRelay(byte onPin, byte offPin):
   onPin(onPin), offPin(offPin) {
 }
 
-void LatchRelay::init(bool startState) {
+void LatchRelay::init() {
   pinMode(onPin, OUTPUT);
   pinMode(offPin, OUTPUT);
+}
+
+void LatchRelay::init(bool startState) {
+  init();
   setState(startState);
 }
 
