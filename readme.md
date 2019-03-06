@@ -7,7 +7,7 @@ It encapsulates the pulse generation necessary to flip the state of the relay, a
 ### Object creation
 This library defines the class `LatchRelay` to drive the switch.
 The constructor has the form
-```
+```cpp
 LatchRelay(onPin, offPin);
 ```
 where `onPin` and `offPin` are of type `byte` and indicate the pins used to control the relay.
@@ -15,33 +15,33 @@ where `onPin` and `offPin` are of type `byte` and indicate the pins used to cont
 
 ### Initialization
 If `relay` is an object of type `LatchRelay`, then somewhere during setup the `init()` method should be called:
-```
+```cpp
 relay.init();
 ```
 This declares the pins named in the constructor as outputs, without changing the switch state.
 If a default starting state is desired, pass a boolean to the function to force it to start on or off:
-```
+```cpp
 relay.init(0); //start off
 relay.init(1); //start on
 ```
 
 ### Controlling the Relay
 The relay is controlled via the `setState()` function, which takes a boolean argument:
-```
+```cpp
 relay.setState(0); //set to off
 relay.setState(1); //set to on
 ```
 Alternatively, use actual `bool` expressions - these are equivalent (though wordier)
-```
+```cpp
 relay.setState(false); //set to off
 relay.setState(true); //set to on
 ```
 Whenever this function is called, the object tracks the relay state, which can be polled:
-```
+```cpp
 bool relayState = relay.getState();
 ```
 There is no explicit function to toggle the switch state, but this is easy enough by combining the get and set methods:
-```
+```cpp
 relay.setState(!relay.getState());
 ```
 Note that `getState()` only tracks the value passed to the last call to `setState()` and cannot actually poll the physical state of the switch.
